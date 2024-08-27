@@ -14,7 +14,10 @@ void printMenu();
 int main() {
   srand(time(NULL));
   
-  int ary[CAPACITY] = {0}; // initialize to all zeroes
+  int ary[CAPACITY]; // initialize to all zeroes
+  for (unsigned int i=0; i<CAPACITY; ++i) {
+    ary[i] = 0;
+  }
   unsigned int size = 0;
   
   char menuChoice = ' ';
@@ -33,7 +36,7 @@ int main() {
       case 'L':
         cout << "Input number of random values to load: ";
         cin >> size;
-        //loadRandom(ary, size);
+        loadRandom(ary, size);
         break;
       case 'I':
         cout << "Input value to insert: ";
@@ -72,7 +75,7 @@ int main() {
         cout << " times" << endl;
         break;
       case 'P':
-        //print(ary, size);
+        print(ary, size);
         break;
       case 'S':
         cout << "Size: " << size << endl;

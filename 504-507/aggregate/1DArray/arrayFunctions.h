@@ -16,5 +16,8 @@ const unsigned int CAPACITY = 100; // make largest size we will ever need
 //   print
 
 // these are declarations
+void loadRandom(int ary[], unsigned int size);
+void insert(int ary[], unsigned int size, int val, unsigned int index);
+void print(const int ary[], unsigned int size);
 
 #endif
