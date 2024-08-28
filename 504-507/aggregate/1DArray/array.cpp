@@ -43,9 +43,9 @@ int main() {
         cin >> num;
         cout << "Input index to insert: ";
         cin >> index;
-          /*insert(num, index, ary, size);
+          insert(ary, size, num, index);
           if (size < CAPACITY)
-            size++;*/
+            size++;
         // we'll let the function update size later when we learn more about pass by reference!
         break;
       case 'R':
