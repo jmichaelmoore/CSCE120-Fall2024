@@ -4,7 +4,7 @@
 #include <cmath>
 #include <limits>
 #include <string>
-#include "functions.h"
+#include "imagefunctions.h"
 
 using std::cin, std::cout, std::endl;
 using std::numeric_limits, std::streamsize;
@@ -99,7 +99,13 @@ void loadImage(const string filename, Pixel image[MAX_WIDTH][MAX_HEIGHT],
 
   // read the color values into the 2D array in Column Major Order
   // TODO
-
+  for (unsigned int row=0; row<height; ++row) {
+    for (unsigned int col=0; col<width; ++col) {
+      ifs >> image[col][row].r;
+      ifs >> image[col][row].g;
+      ifs >> image[col][row].b;
+    }
+  }
 }
 
 /*  Function grayscale
@@ -173,4 +179,28 @@ void outputImage(const string filename, const Pixel image[MAX_WIDTH][MAX_HEIGHT]
 
   // output from column major order array into row major PPM file
   // TODO
+  for (unsigned int row=0; row<height; ++row) {
+    for (unsigned int col=0; col<width; ++col) {
+      ofs << image[col][row].r << " ";
+      ofs << image[col][row].g << " ";
+      ofs << image[col][row].b << " ";
+    }
+    ofs << endl;
+  }
+}
+
+// You should not modify this function. //
+unsigned int getInteger(const string label, unsigned int min, unsigned int max)
+{
+  // get value from user repeatedly until input matches requirements
+  unsigned int num = 0;
+  do
+  {
+    cin.clear();                                         // reset stream states
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear buffer
+
+    cout << "Please enter " << label << " (" << min << " - " << max << "): ";
+    cin >> num;
+  } while (!cin.good() || num < min || num > max); // while input does not match requirements
+  return num;
 }

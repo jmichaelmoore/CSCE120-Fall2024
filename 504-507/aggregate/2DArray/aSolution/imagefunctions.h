@@ -25,4 +25,6 @@ void sepiaImage(Pixel image[MAX_WIDTH][MAX_HEIGHT], unsigned int width, unsigned
 
 void reverseGrayscaleImage(Pixel image[MAX_WIDTH][MAX_HEIGHT], unsigned int width, unsigned int height);
 
+unsigned int getInteger(const std::string label, unsigned int min, unsigned int max);
+
 #endif

@@ -15,6 +15,29 @@ void loadRandom(int ary[], unsigned int size) {
 }
 
 void insert(int ary[], unsigned int size, int val, unsigned int index) {
+    if (index > size) {
+        index = size;
+    }
+    if (size == CAPACITY) {
+        return;
+    }
+    for (unsigned int i=0; i < size - index; ++i) {
+        ary[size-1 - i + 1] = ary[size-1 - i];
+    }
+    ary[index] = val;
+}
+
+int getMax(int ary[], unsigned int size) {
+    if (size == 0) {
+        return 0;
+    }
+    int max = ary[0];
+    for (unsigned int i=1; i<size; ++i) {
+        if (ary[i] > max) {
+            max = ary[i];
+        }
+    }
+    return max;
 }
 
 void print(const int ary[], unsigned int size) {

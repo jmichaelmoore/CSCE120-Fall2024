@@ -1,15 +1,15 @@
 #include <iostream>
-#include "functions.h"
+#include "imagefunctions.h"
 
 using namespace std;
 
 void printMenu();
-unsigned int getInteger(const std::string label, unsigned int min, unsigned int max);
 
 int main() {
   // declare/define image 2d array of Pixels
   // would be too big for the stack, so 'static' puts it somewhere else but scope is still in main
-  
+  static Pixel image[MAX_WIDTH][MAX_HEIGHT];
+
   char menuChoice = ' '; // selected menu option
   do {
     printMenu();
@@ -18,7 +18,7 @@ int main() {
       case 'G':
       case 'S':
       case 'R':
-        //processImage(menuChoice, image); // use fall through
+        processImage(menuChoice, image); // use fall through
         break;
       case 'Q': // does nothing but needed or default will execute
         break;
@@ -50,18 +50,3 @@ void printMenu()
  *  max: int value indicating the largest value the user should provide
  *  Return value: int value within the range min <= value <= max
  */
-// You should not modify this function. //
-unsigned int getInteger(const string label, unsigned int min, unsigned int max)
-{
-  // get value from user repeatedly until input matches requirements
-  unsigned int num = 0;
-  do
-  {
-    cin.clear();                                         // reset stream states
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear buffer
-
-    cout << "Please enter " << label << " (" << min << " - " << max << "): ";
-    cin >> num;
-  } while (!cin.good() || num < min || num > max); // while input does not match requirements
-  return num;
-}

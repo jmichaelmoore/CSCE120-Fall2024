@@ -61,7 +61,7 @@ int main() {
         size--;*/
         break;
       case 'X':
-        //cout << "Max: " << getMax(ary, size);
+        cout << "Max: " << getMax(ary, size);
         cout << endl;
         break;
       case 'N':
