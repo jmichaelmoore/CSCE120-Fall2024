@@ -120,6 +120,9 @@ void grayscaleImage(Pixel image[MAX_WIDTH][MAX_HEIGHT], unsigned int width, unsi
   // iterate through 2d image of Pixels and convert them to grayscale
   // use opposite outer loop than load and output just to be different
   // TODO
+
+  }
+
  }
 
 /*  Function sepiaImage

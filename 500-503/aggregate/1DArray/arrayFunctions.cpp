@@ -13,16 +13,32 @@ void loadRandom(int ary[], unsigned int size) {
 }
 
 void insert(int ary[], unsigned int size, int val, unsigned int index) {
+    cout << "starting insert" << endl;
+    cout << "val: " << val << endl;
+    cout << "index: " << index << endl;
     if (index > size) {
+        cout << "got into if (index > size)" << endl;
         index = size;
     }
     if (size == CAPACITY) {
+        cout << "size was Capacity so ending" << endl;
         return;
     }
     for (unsigned int i=0; i < size - index; ++i) {
+        unsigned int leftIndex = size-1-i + 1;
+        unsigned int rightIndex = size-1 - i;
+        cout << "leftIndex: " << leftIndex << endl;
+        cout << "rightIndex: " << rightIndex << endl;
+        cout << "before assignment" << endl;
+        cout << "value at leftIndex: " << ary[leftIndex] << endl;
+        cout << "value at rightIndex: " << ary[rightIndex] << endl;
         ary[size-1-i + 1] = ary [size-1 - i];
+        cout << "after assignment" << endl;
+        cout << "value at leftIndex: " << ary[leftIndex] << endl;
+        cout << "value at rightIndex: " << ary[rightIndex] << endl;
     }
     ary[index] = val;
+    cout << "ending index function" << endl;
 }
 
 int getMax(const int ary[], unsigned int size) {

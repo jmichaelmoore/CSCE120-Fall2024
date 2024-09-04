@@ -18,7 +18,7 @@ int main() {
       case 'G':
       case 'S':
       case 'R':
-        //processImage(menuChoice, image); // use fall through
+        processImage(menuChoice, image); // use fall through
         break;
       case 'Q': // does nothing but needed or default will execute
         break;
