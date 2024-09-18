@@ -19,6 +19,10 @@ int main() {
         string stopword;
         size_t commaIndex = stopwords.find(",", stopwordIndex);
         size_t length = string::npos;
+        if (commaIndex != string::npos) {
+            length = commaIndex - stopwordIndex;
+        }
+        string stopword = stopwords.substr(stopwordIndex, length);
     }
     cout << "Updated string: " << endl;
     cout << text << endl;

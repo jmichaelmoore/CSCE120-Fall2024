@@ -22,6 +22,16 @@ int main() {
   text = "Let's get this done!";
   
   // add code to replace vowels with random symbols from set
-
+  for (size_t i=0; i<vowels.length(); ++i) {
+    size_t position = 0;
+    do {
+      position = text.find_first_of(vowels.at(i));
+      if (position != string::npos) {
+        size_t rndIndex = rand()%symbols.size();
+        char sym = symbols.at(rndIndex);
+        text.at(position) = sym;
+      }
+    } while (position != string::npos);
+  }
   cout << "Your modified phrase: " << text << endl;
 }
