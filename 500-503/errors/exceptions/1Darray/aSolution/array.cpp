@@ -33,6 +33,7 @@ int main() {
     int num = 0;
     unsigned int index = 0;
       
+    try {
     switch (toupper(menuChoice)) {
       case 'L':
         cout << "Input number of random values to load: ";
@@ -84,6 +85,10 @@ int main() {
       default:
         cout << "Invalid option" << endl;
     }
+  }
+  catch (std::exception& e) {
+    cout << e.what() << endl;
+  }
   }
   
   cout << endl << "Goodbye!" << endl;

@@ -5,6 +5,9 @@ using std::cin, std::cout, std::endl;
 
 void loadRandom(int ary[], unsigned int size) {
     if (size > CAPACITY) {
+        throw std::out_of_range("Size is too big");
+    }
+    if (size > CAPACITY) {
         size = CAPACITY;
     }
     for (unsigned int i=0; i<size; ++i) {
@@ -13,6 +16,9 @@ void loadRandom(int ary[], unsigned int size) {
 }
 
 void insert(int ary[], unsigned int size, int val, unsigned int index) {
+    if (index >= size) {
+        throw std::out_of_range("index must be withing the array");
+    }
     cout << "starting insert" << endl;
     cout << "val: " << val << endl;
     cout << "index: " << index << endl;
