@@ -5,7 +5,9 @@ using std::cin, std::cout, std::endl, std::string;
 
 string formatResult(double a, double b, char op, double result) {
     // format using ostringstream
-    return "";
+    std::ostringstream kelly;
+    kelly << a << " " << op << " " << b << " = " << result << endl;
+    return kelly.str();
 }
 
 int main() {
@@ -14,10 +16,13 @@ int main() {
     // use getline, explain polymorphism and inheritance
     std::getline(cin, line);
     // use istringstream to extract values from line
+    std::istringstream iss(line);
     double result = 0;
     double firstNum = 0;
     double secondNum = 0;
     char op = ' ';
+    // extract values from stream
+    iss >> firstNum >> op >> secondNum;
     // determine what to do based on the op
     switch (op) {
         case '+': result = firstNum + secondNum; break;

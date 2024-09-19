@@ -14,8 +14,7 @@ void printMenu();
 int main() {
   srand(time(NULL));
   
-  int ary[CAPACITY]; // = {0}; // initialize to all zeroes
-  // initialize
+  int ary[CAPACITY]; // initialize to all zeroes
   for (unsigned int i=0; i<CAPACITY; ++i) {
     ary[i] = 0;
   }
@@ -32,7 +31,8 @@ int main() {
 
     int num = 0;
     unsigned int index = 0;
-      
+
+    try {
     switch (toupper(menuChoice)) {
       case 'L':
         cout << "Input number of random values to load: ";
@@ -81,8 +81,10 @@ int main() {
       case 'S':
         cout << "Size: " << size << endl;
         break;
-      default:
-        cout << "Invalid option" << endl;
+    }
+    }
+    catch (std::exception& e) {
+      cout << e.what() << endl;
     }
   }
   
