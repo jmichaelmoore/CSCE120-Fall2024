@@ -6,10 +6,6 @@
 using std::cin, std::cout, std::cerr, std::endl, std::string;
 using std::istringstream, std::ifstream, std::ofstream;
 
-string getReplace(string wd) {
-	return "***";
-}
-
 int main(int argc, char *argv[]) {
 	// use hard coded if files are not provided
 	string censorWordsFilename = "censorwords.txt";
