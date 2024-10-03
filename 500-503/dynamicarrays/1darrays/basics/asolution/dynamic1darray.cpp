@@ -18,9 +18,12 @@ int main() {
   // define pointer to appropriate datatype (double)
   // allocate memory for the array with "new"
   // call it ary so it works with the pre-written code
-  double* ary = new double[size];
+  double* ary = new double[size] {7, 5, 9};
 
   // 1) initialize using loop
+  // for (unsigned int i=0; i<size; ++i) {
+  //   ary[i] = 3;
+  // }
 
   // 2) update to initialize using curly braces when creating array
 
@@ -50,6 +53,9 @@ int main() {
 
   // release memory for the array with "delete[]"
   // set ary to point to nullptr to avoid dangling pointer
+  delete[] ary;
+  cout << ary[0] << endl;
+  ary = nullptr;
 }
 
 double max(double* nums, unsigned int size) {

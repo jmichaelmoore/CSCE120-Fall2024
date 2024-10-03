@@ -14,7 +14,7 @@ int main() {
     char l = str.at(index);
     cout << "Letter at index " << index << " is '" << l << "'." << endl;
   }
-  catch (std::out_of_range e) {
+  catch (std::out_of_range &e) {
     cout << e.what() << endl;
   }
 }

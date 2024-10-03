@@ -15,7 +15,7 @@ void loadRandom(int ary[], unsigned int size) {
     }
 }
 
-void insert(int ary[], unsigned int size, int val, unsigned int index) {
+void insert(int ary[], unsigned int& size, int val, unsigned int index) {
     if (index >= size) {
         throw std::out_of_range("index must be withing the array");
     }
@@ -44,6 +44,7 @@ void insert(int ary[], unsigned int size, int val, unsigned int index) {
         cout << "value at rightIndex: " << ary[rightIndex] << endl;
     }
     ary[index] = val;
+    size++;
     cout << "ending index function" << endl;
 }
 

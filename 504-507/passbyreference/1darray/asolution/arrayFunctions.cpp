@@ -17,7 +17,7 @@ void loadRandom(int ary[], unsigned int size) {
     }
 }
 
-void insert(int ary[], unsigned int size, int val, unsigned int index) {
+void insert(int ary[], unsigned int& size, int val, unsigned int index) {
     if (index > size) {
         throw std::out_of_range("index must be in the string");
     }
@@ -31,9 +31,10 @@ void insert(int ary[], unsigned int size, int val, unsigned int index) {
         ary[size-1 - i + 1] = ary[size-1 - i];
     }
     ary[index] = val;
+    size++;
 }
 
-int getMax(int ary[], unsigned int size) {
+int getMax(const int ary[], unsigned int size) {
     if (size == 0) {
         return 0;
     }
