@@ -23,23 +23,10 @@ void addCharacter(char c, unsigned int row, unsigned int col, char**& canvas, un
   // if we make it this far we know that row and col are valid values and c is printable
 
   // check if location is available in current size
-  unsigned int newWidth = width;
-  unsigned int newHeight = height;
-  bool resize = false;
-  if (row >= height) {
-    newHeight = row+1;
-    resize = true;
-  }
-  if (col >= width) {
-    newWidth = col+1;
-    resize = true;
-  }
+
   // if it isn't resize
-  if (resize) {
-    resizeCanvas(canvas, width, height, newWidth, newHeight);
-  }
+  
   // regardless, add the character to the correct location.
-  canvas[row][col] = c;
 }
 
 char** makeCanvas(unsigned int width, unsigned int height) {
@@ -59,34 +46,12 @@ void resizeCanvas(char**& canvas, unsigned int& width,  unsigned int& height, un
   cout << "resizeCanvas" << endl;
 
   // make new array
-  char** newCanvas = new char*[newHeight];
-  for (unsigned int row=0; row<height) {
-    newCanvas[row] = new char[width];
-    for (unsigned int col=0; col<width; ++col) {
-      newCanvas[row][col] = ' ';
-    }
-  }
 
   // copy
-  unsigned int w = newWidth;
-  if (width < w) w = width;
-  unsigned int h = newHeight;
-  if (height < h) h = height;
-
-  for (unsigned int row=0; row<h; ++row) {
-    for (unsigned int col=0; col<w; ++col) {
-      newCanvas[row][col] = canvas[row][col];
-    }
-  }
 
   // delete old memory
-  releaseCanvas(canvas, width, height);
 
   // update
-  canvas = newCanvas;
-  width = newWidth;
-  height = newHeight;
-  newCanvas = nullptr;
 }
 
 void releaseCanvas(char**& canvas, unsigned int& width, unsigned int& height) { 
