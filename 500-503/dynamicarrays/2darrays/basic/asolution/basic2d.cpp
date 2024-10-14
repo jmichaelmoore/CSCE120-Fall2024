@@ -4,10 +4,10 @@ using std::cin, std::cout, std::endl;
 
 // char using column major ordering
 
-void makeary(char**, unsigned int rows, unsigned int cols);
+void makeary(char**&, unsigned int rows, unsigned int cols);
 void loadary(char**, unsigned int rows, unsigned int cols);
-void printary(char**, unsigned int rows, unsigned int cols);
-void releaseary(char**, unsigned int rows, unsigned int cols);
+void printary(const char*const*, unsigned int rows, unsigned int cols);
+void releaseary(char**&, unsigned int& rows, unsigned int& cols);
 
 int main() {
   srand(time(NULL));
@@ -30,9 +30,12 @@ int main() {
   releaseary(ary, rows, cols);
 }
 
-void makeary(char** ary, unsigned int rows, unsigned int cols) {
+void makeary(char**& ary, unsigned int rows, unsigned int cols) {
   // declare variable (done in function signature)
-
+  ary = new char*[cols];
+  for (unsigned int col=0; col<cols; ++col) {
+    ary[col] = new char[rows];
+  }
   // create array of pointers for cols
 
 }
@@ -53,7 +56,7 @@ void loadary(char** ary, unsigned int rows, unsigned int cols) {
   }
 }
 
-void printary(char** ary, unsigned int rows, unsigned int cols) {
+void printary(const char*const* ary, unsigned int rows, unsigned int cols) {
   // must print with row in outer loop to match our mental model
   for (unsigned int row=0; row<rows; row++) {
     for (unsigned int col=0; col<cols; col++) {
@@ -63,5 +66,12 @@ void printary(char** ary, unsigned int rows, unsigned int cols) {
   }
 }
 
-void releaseary(char** ary, unsigned int rows, unsigned int cols) {
+void releaseary(char**& ary, unsigned int& rows, unsigned int& cols) {
+  for (unsigned int col=0; col<cols; ++col) {
+    delete [] ary[col];
+  }
+  delete [] ary;
+  ary = nullptr;
+  rows = 0;
+  cols = 0;
 }

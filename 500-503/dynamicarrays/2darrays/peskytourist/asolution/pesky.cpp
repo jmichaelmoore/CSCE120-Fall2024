@@ -18,12 +18,19 @@ void mySwap(unsigned int& a, unsigned int& b) {
 unsigned int getMedian(unsigned int a, unsigned int b, unsigned int c) {
     // sort local copies
     // return middle value
-    return 0;
+    if (b<a) swap(b,a);
+    if (c<a) swap(c,a);
+    if (c<b) swap (c,b);
+    return b;
 }
 
 Pixel** makeImage(unsigned int width, unsigned int height) {
     // throw exception if we fail to allocate memory for the image.
-    return nullptr;
+    Pixel** ary = new Pixel*[width];
+    for (unsigned int col=0; col<width; ++col) {
+        ary[col] = new Pixel[height];
+    }
+    return ary;
 }
 
 // (ifstream, image, width, height) allow images and width and height to be updated
@@ -62,7 +69,14 @@ void outputImage(ofstream& ofs, const Pixel*const* img, unsigned int width, unsi
 }
 
 // (image, what else?)
-void deleteImage() {
+void deleteImage(Pixel**& img, unsigned int& width, unsigned int& height) {
+    for (unsigned int col=0; col<width; ++col) {
+        delete [] img[col];
+    }
+    delete [] img;
+    img = nullptr;
+    width = 0;
+    height = 0;
 }
 
 int main() {
@@ -100,6 +114,15 @@ int main() {
         result = makeImage(width, height);
 
         // Process out that pesky tourist
+        for (unsigned int row=0; row<height; ++row) {
+            for (unsigned int col=0; col<width; ++col) {
+                result[col][row] = {
+                    getMedian(img1[col][row].r,img2[col][row].r,img3[col][row].r),
+                    getMedian(img1[col][row].g,img2[col][row].g,img3[col][row].g),
+                    getMedian(img1[col][row].b,img2[col][row].b,img3[col][row].b)
+                };
+            }
+        }
 
         // output result image
         outputImage(outFile, result, width, height);
