@@ -39,8 +39,22 @@ void printTable(const int*const* table, unsigned int rows, unsigned int cols) {
 
 void makeTable(int**& table, unsigned int rows, unsigned int cols) {
   // create 2d array on the heap
+  table = new int*[rows];
+  for (unsigned int row=0; row<rows; ++row) {
+    table[row] = new int[cols];
+  }
 }
 
 void releaseTable(int**& table, unsigned int& rows, unsigned int& cols) {
   // release memory from the heap and set variables to values consistent with an empty array
+
+  for (unsigned int row=0; row<rows; ++row) {
+    delete [] table[row];
+  }
+
+  delete [] table;
+
+  table = nullptr;
+  rows = 0;
+  cols = 0;
 }
