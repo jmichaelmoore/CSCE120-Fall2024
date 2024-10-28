@@ -42,7 +42,7 @@ int main() {
     b.setBlue(255);
     printPixel("b", b);
 
-    /*
+
     cout << "d = a + b;" << endl;
     d = a + b;
     printPixel("d", d);
@@ -60,5 +60,4 @@ int main() {
     printPixel("d", d);
     printPixel("c", c);
     cout << "c == d: " << std::boolalpha << (c==d) << endl;
-    */
 }

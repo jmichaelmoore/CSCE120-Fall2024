@@ -45,3 +45,31 @@ void Pixel::setBlue(unsigned short blue) {
     }
     this->blue = blue;
 }
+
+Pixel& Pixel::operator=(const Pixel& src) {
+    this->red = src.red; // (*this).red
+    this->green = src.green;
+    this->blue = src.blue;
+    return *this;
+}
+
+Pixel Pixel::operator+(const Pixel& rhs) {
+    Pixel p;
+    p.red = (this->red+rhs.red)/2;
+    p.green = (this->green+rhs.green)/2;
+    p.blue = (this->blue+rhs.blue)/2;
+    return p;
+}
+
+Pixel& Pixel::operator-() {
+    this->red = 255 - this->red;
+    this->green = 255 - this->green;
+    this->blue = 255 - this->blue;
+    return *this;
+}
+
+bool Pixel::operator==(const Pixel& rhs) {
+    return this->red == rhs.red &&
+        this->green == rhs.green &&
+        this->blue == rhs.blue;
+}
