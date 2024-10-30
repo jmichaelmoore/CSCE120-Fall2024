@@ -28,6 +28,4 @@ public:
     bool operator==(const Pixel& rhs) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Pixel& p);
-
 #endif

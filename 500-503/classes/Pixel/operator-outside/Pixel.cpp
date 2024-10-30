@@ -13,7 +13,7 @@ Pixel::Pixel(const Pixel& p) : red(p.red), green(p.green), blue(p.blue) {} // co
 
 Pixel::Pixel() : red(0), green(0), blue(0) {} // default constructor
 
-unsigned short Pixel::getRed() {
+unsigned short Pixel::getRed() const {
     return red;
 }
 
@@ -24,7 +24,7 @@ void Pixel::setRed(unsigned short red) {
     this->red = red;
 }
 
-unsigned short Pixel::getGreen() {
+unsigned short Pixel::getGreen() const {
     return green;
 }
 
@@ -35,7 +35,7 @@ void Pixel::setGreen(unsigned short green) {
     this->green = green;
 }
 
-unsigned short Pixel::getBlue() {
+unsigned short Pixel::getBlue() const {
     return blue;
 }
 
@@ -53,7 +53,7 @@ Pixel& Pixel::operator=(const Pixel& src) {
     return *this;
 }
 
-Pixel Pixel::operator+(const Pixel& src) {
+Pixel Pixel::operator+(const Pixel& src) const {
     Pixel p;
     p.red = (this->red+src.red)/2;
     p.green = (this->green+src.green)/2;
@@ -68,8 +68,14 @@ Pixel& Pixel::operator-() {
     return *this;
 }
 
-bool Pixel::operator==(const Pixel& src) {
+bool Pixel::operator==(const Pixel& src) const {
     return this->red == src.red &&
            this->green == src.green &&
            this->blue == src.blue;
+}
+
+std::ostream& operator<<(std::ostream& os, const Pixel& p) {
+    os << "{ " << p.getRed() << ", " << p.getGreen();
+    os << ", " << p.getBlue() << " }";
+    return os;
 }

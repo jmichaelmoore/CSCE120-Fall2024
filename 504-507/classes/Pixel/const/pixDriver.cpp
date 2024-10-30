@@ -60,12 +60,4 @@ int main() {
     printPixel("d", d);
     printPixel("c", c);
     cout << "c == d: " << std::boolalpha << (c==d) << endl;
-
-    cout << endl;
-
-    cout << "a: " << a << endl;
-    cout << "b: " << b << endl;
-    cout << "c: " << c << endl;
-    cout << "d: " << d << endl;
-
 }

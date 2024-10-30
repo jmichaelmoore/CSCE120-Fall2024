@@ -21,13 +21,11 @@ public:
     // add =
     Pixel& operator=(const Pixel& src);
     // add +
-    Pixel operator+(const Pixel& rhs) const;
+    Pixel operator+(const Pixel& src) const;
     // add - (unary)
     Pixel& operator-();
     // add ==
-    bool operator==(const Pixel& rhs) const;
+    bool operator==(const Pixel& src) const;
 };
-
-std::ostream& operator<<(std::ostream& os, const Pixel& p);
 
 #endif

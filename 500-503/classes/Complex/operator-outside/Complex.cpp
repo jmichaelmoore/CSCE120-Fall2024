@@ -2,12 +2,12 @@
 #include <sstream>
 #include <string>
 
-double Complex::getReal() { return real; }
-double Complex::getImaginary() {return imag; }
+double Complex::getReal() const { return real; }
+double Complex::getImaginary() const {return imag; }
 void Complex::setReal(double real) { this->real = real; }
 void Complex::setImaginary(double imaginary) { this->imag = imaginary; }
 
-std::string Complex::to_string() {
+std::string Complex::to_string() const {
   std::ostringstream oss;
   oss << real;
   if (imag < 0) { // negative imag
@@ -26,12 +26,12 @@ Complex& Complex::operator=(const Complex& src) {
   return *this;
 }
 
-bool Complex::operator==(const Complex& rhs) {
+bool Complex::operator==(const Complex& rhs) const {
   return this->real == rhs.real &&
       this->imag == rhs.imag;
 }
 
-Complex Complex::operator+(const Complex& rhs) {
+Complex Complex::operator+(const Complex& rhs) const {
   Complex c;
   c.real = this->real + rhs.real;
   c.imag = this->imag + rhs.imag;
@@ -42,4 +42,9 @@ Complex& Complex::operator-() {
   this->real *= -1;
   this->imag *= -1;
   return *this;
+}
+
+std::ostream& operator<<(std::ostream& os, const Complex& c) {
+  os << c.to_string();
+  return os;
 }

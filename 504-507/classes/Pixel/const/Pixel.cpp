@@ -73,9 +73,3 @@ bool Pixel::operator==(const Pixel& rhs) const {
         this->green == rhs.green &&
         this->blue == rhs.blue;
 }
-
-std::ostream& operator<<(std::ostream& os, const Pixel& p) {
-    os << "{ " << p.getRed() << ", " << p.getGreen();
-    os << ", " << p.getBlue() << " }";
-    return os;
-}

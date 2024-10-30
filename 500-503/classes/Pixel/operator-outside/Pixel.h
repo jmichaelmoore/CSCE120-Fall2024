@@ -13,19 +13,21 @@ public:
     Pixel(const Pixel& p); // copy constructor
     Pixel(); // default constructor
     void setRed(unsigned short red);
-    unsigned short getRed();
+    unsigned short getRed() const;
     void setGreen(unsigned short green);
-    unsigned short getGreen();
+    unsigned short getGreen() const;
     void setBlue(unsigned short blue);
-    unsigned short getBlue();
+    unsigned short getBlue() const;
     // add =
     Pixel& operator=(const Pixel& src);
     // add +
-    Pixel operator+(const Pixel& src);
+    Pixel operator+(const Pixel& src) const;
     // add - (unary)
     Pixel& operator-();
     // add ==
-    bool operator==(const Pixel& src);
+    bool operator==(const Pixel& src) const;
 };
+
+std::ostream& operator<<(std::ostream& os, const Pixel& p);
 
 #endif
