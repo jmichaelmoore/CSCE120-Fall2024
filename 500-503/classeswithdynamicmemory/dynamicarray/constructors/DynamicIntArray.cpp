@@ -1,4 +1,5 @@
 #include "DynamicIntArray.h"
+#include <stdexcept>
 
 void DynamicIntArray::increaseCapacity(size_t capacity) {
     if (ary == nullptr) {
@@ -8,7 +9,7 @@ void DynamicIntArray::increaseCapacity(size_t capacity) {
     else {
         this->capacity_ *= 2;
         int* temp = new int[this->capacity_];
-        for (size_t i=0; i<this->size_; ++i) {
+        for (size_t i = 0; i<size_; ++i) {
             temp[i] = ary[i];
         }
         delete [] ary;
@@ -16,11 +17,12 @@ void DynamicIntArray::increaseCapacity(size_t capacity) {
     }
 }
 
-DynamicIntArray::DynamicIntArray(size_t size, int initVal) :
+DynamicIntArray::DynamicIntArray(size_t size, char initVal) :
         ary(nullptr), size_(size), capacity_(size) {
-    ary = new int[capacity_];
-    for (size_t i=0; i<size; ++i) {
+    increaseCapacity(size_);
+    for (size_t i=0; i<size_; ++i) {
         ary[i] = initVal;
+
     }
 }
 
@@ -36,20 +38,4 @@ int& DynamicIntArray::at(size_t index) {
         throw std::out_of_range("index out of range");
     }
     return ary[index];
-}
-
-int DynamicIntArray::operator[](size_t index) const {
-    return ary[index];
-}
-
-int& DynamicIntArray::operator[](size_t index) {
-    return ary[index];
-}
-
-void DynamicIntArray::push_back(int val) {
-    if (size_ == capacity_) {
-        increaseCapacity();
-    }
-    ary[size_] = val;
-    size_++;
 }

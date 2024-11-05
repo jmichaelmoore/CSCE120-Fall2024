@@ -17,17 +17,15 @@ int main() {
   printArray("c", c);
 
   c.at(2) = 2;
+  /*
   c[0] = 9;
 
   printArray("c", c);
 
+  b.push_back(1);
 
-  a.push_back(1);
-  printArray("a", a);
+  printArray("b", b);
 
-  a.push_back(3);
-  printArray("a", a);
-/*
   DynamicIntArray d(b);
 
   printArray("d", d);
