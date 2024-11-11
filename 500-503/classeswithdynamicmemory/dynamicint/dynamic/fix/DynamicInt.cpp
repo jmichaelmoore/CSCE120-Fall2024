@@ -15,7 +15,7 @@ DynamicInt::~DynamicInt() {
   val = nullptr;
 }
 
-DynamicInt::DynamicInt(const DynamicInt& src) :
+DynamicInt::DynamicInt(const DynamicInt& src) : 
   val(new int(*(src.val))) {}
 
 DynamicInt& DynamicInt::operator=(const DynamicInt& src) {
@@ -23,5 +23,4 @@ DynamicInt& DynamicInt::operator=(const DynamicInt& src) {
     delete val;
     val = new int(*(src.val));
   }
-  return *this;
 }

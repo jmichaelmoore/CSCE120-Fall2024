@@ -28,7 +28,7 @@ int main() {
 
   printArray("a", a);
 
-/*
+
   DynamicIntArray d(b);
 
   printArray("d", d);
@@ -41,7 +41,6 @@ int main() {
 
   printArray("d",d);
   printArray("a", a);
-  */
 }
 
 void printArray(string label, const DynamicIntArray& ary) {

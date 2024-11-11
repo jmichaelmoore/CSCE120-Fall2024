@@ -18,6 +18,9 @@ public:
     // getters & setters
     int at(size_t index) const;
     int& at(size_t index);
+    int operator[](size_t index) const;
+    int& operator[](size_t index);
+    void push_back(int val);
 };
 
 #endif

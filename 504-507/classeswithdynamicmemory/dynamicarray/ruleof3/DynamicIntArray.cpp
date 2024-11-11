@@ -1,5 +1,4 @@
 #include "DynamicIntArray.h"
-#include <stdexcept>
 
 void DynamicIntArray::increaseCapacity(size_t capacity) {
     if (ary == nullptr) {
@@ -9,7 +8,7 @@ void DynamicIntArray::increaseCapacity(size_t capacity) {
     else {
         this->capacity_ *= 2;
         int* temp = new int[this->capacity_];
-        for (size_t i = 0; i<size_; ++i) {
+        for (size_t i=0; i<this->size_; ++i) {
             temp[i] = ary[i];
         }
         delete [] ary;
@@ -17,12 +16,11 @@ void DynamicIntArray::increaseCapacity(size_t capacity) {
     }
 }
 
-DynamicIntArray::DynamicIntArray(size_t size, char initVal) :
+DynamicIntArray::DynamicIntArray(size_t size, int initVal) :
         ary(nullptr), size_(size), capacity_(size) {
-    increaseCapacity(size_);
-    for (size_t i=0; i<size_; ++i) {
+    ary = new int[capacity_];
+    for (size_t i=0; i<size; ++i) {
         ary[i] = initVal;
-
     }
 }
 
@@ -53,5 +51,40 @@ void DynamicIntArray::push_back(int val) {
         increaseCapacity();
     }
     ary[size_] = val;
-    ++size_;
+    size_++;
+}
+
+DynamicIntArray::~DynamicIntArray() {
+    delete [] ary;
+    ary = nullptr;
+    size_ = 0;
+    capacity_ = 0;
+}
+
+void DynamicIntArray::copy_(const DynamicIntArray& src) {
+        ary = new int[capacity_];
+        for (size_t i=0; i<size_; ++i) {
+            this->ary[i] = src.ary[i];
+        }
+}
+
+DynamicIntArray::DynamicIntArray(const DynamicIntArray& src) :
+    ary(nullptr), size_(src.size_), capacity_(src.capacity_) {
+        copy_(src);
+    }
+
+DynamicIntArray& DynamicIntArray::operator=(const DynamicIntArray& src) {
+    if (this != &src) {
+        delete [] ary;
+        size_ = src.size_;
+        capacity_ = src.capacity_;
+        copy_(src);
+    }
+    return *this;
+}
+
+void DynamicIntArray::swap(DynamicIntArray& rhs) {
+    DynamicIntArray temp = *this;
+    *this = rhs;
+    rhs = temp;
 }

@@ -23,12 +23,11 @@ int main() {
 
 
   a.push_back(1);
-  a.push_back(2);
-  a.push_back(3);
-
   printArray("a", a);
 
-/*
+  a.push_back(3);
+  printArray("a", a);
+
   DynamicIntArray d(b);
 
   printArray("d", d);
@@ -41,7 +40,6 @@ int main() {
 
   printArray("d",d);
   printArray("a", a);
-  */
 }
 
 void printArray(string label, const DynamicIntArray& ary) {
