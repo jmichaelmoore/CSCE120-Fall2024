@@ -13,7 +13,7 @@ struct Node {
 class LLstr {
     Node* head;
     Node* tail;
-    Node* find(const int& val);
+    Node* find(const char& val);
   public:
     //constructors & deconstructor
     LLstr() : head(nullptr), tail(nullptr) {}

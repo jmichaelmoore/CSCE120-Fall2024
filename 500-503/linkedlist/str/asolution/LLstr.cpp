@@ -63,12 +63,16 @@ std::ostream& operator<<(std::ostream& os, const LLstr& src) {
     return os;
 }
 
-Node* LLstr::find(const int& val) {
-    return nullptr;
+Node* LLstr::find(const char& val) {
+    Node* cur = head;
+    while (cur != nullptr && cur->letter != val) {
+        cur = cur->next;
+    }
+    return cur;
 }
 
 bool LLstr::hasChar(const char& val) {
-    return false; // stubb
+    return find(val) != nullptr;
 }
 
 void LLstr::insertAfter(const char& valToAdd, const char& valToFind) {

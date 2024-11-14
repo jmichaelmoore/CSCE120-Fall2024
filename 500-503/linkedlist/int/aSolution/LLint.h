@@ -13,6 +13,7 @@ class LLint {
     Node* head;
     Node* tail;
     void printRecursive(Node* n, std::ostream& os = std::cout);
+    Node* find(const int& val);
     
   public:
     LLint() : head(nullptr), tail(nullptr) {}
@@ -22,6 +23,10 @@ class LLint {
 
     void insertAfter(const int& valToInsert, const int& valToFind);
     void insertBefore(const int& valToInsert, const int& valToFind);
+
+    void remove(const int& val);
+
+    bool hasVal(const int& val);
 
     void print(std::ostream& = std::cout) const;
     void printReverse(std::ostream& = std::cout);
