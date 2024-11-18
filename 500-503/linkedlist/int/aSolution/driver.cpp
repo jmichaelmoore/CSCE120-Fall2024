@@ -29,6 +29,9 @@ int main() {
     printTest("ll_1: insert 6 before 9",ll_1);
     ll_1.remove(7);
     printTest("ll_1: remove 7",ll_1);
+    ll_1.clear();
+    printTest("ll_1: clear",ll_1);
+
     /*
     ll_1.printReverse();*/
  

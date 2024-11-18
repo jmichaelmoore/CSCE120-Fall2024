@@ -89,6 +89,7 @@ void LLint::remove(const int& val) {
     Node* cur = head;
     Node* prev = nullptr;
     while (cur != nullptr && cur->data != val) {
+        prev = cur;
         cur = cur->next;
     }
     if (cur==nullptr) { return; }
@@ -102,5 +103,17 @@ void LLint::remove(const int& val) {
         tail = prev;
     }
     delete cur;
+    cur = nullptr;
 }
     
+void LLint::clear() {
+    Node* deleteNode = nullptr;
+    while (head != nullptr) {
+        deleteNode = head;
+        head = head->next;
+        delete deleteNode;
+    }
+    //head = nullptr; exited loop with head pointing to nullptr
+    tail = nullptr;
+
+}

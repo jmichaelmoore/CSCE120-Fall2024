@@ -25,6 +25,7 @@ class LLint {
     void insertBefore(const int& valToInsert, const int& valToFind);
 
     void remove(const int& val);
+    void clear();
 
     bool hasVal(const int& val);
 
