@@ -80,9 +80,11 @@ bool LLint::hasValue(const int& val ){
 }
 
 void LLint::remove(const int& val) {
+    if (head == nullptr) { return; }
     Node* cur = head;
     Node* prev = nullptr;
     while (cur != nullptr && cur->data != val) {
+        prev = cur;
         cur = cur->next;
     }
     if (cur == nullptr) { return; }
@@ -92,5 +94,19 @@ void LLint::remove(const int& val) {
     else { // new head
         head = cur->next;
     }
+    if (cur == tail) {
+        tail = prev;
+    }
     delete cur;
+}
+
+void LLint::clear() {
+    Node* deleteNode = nullptr;
+    while (head != nullptr ) {
+        deleteNode = head;
+        head = head->next;
+        delete deleteNode;
+    }
+    //head = nullptr; head was nullptr coming out of the loop
+    tail = nullptr;
 }
